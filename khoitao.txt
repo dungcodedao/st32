@@ -1,0 +1,44 @@
+//khởi tạo và cấu hình LCD trong main.C
+
+#include "i2c-lcd.h"
+
+volatile uint32_t pulse_count = 0;
+
+void display_pulse_count(void)
+{
+    char buffer[20];
+    sprintf(buffer, "Pulses: %lu", pulse_count);
+    lcd_put_cur(0, 0); // Đặt con trỏ vào hàng đầu tiên, cột đầu tiên
+    lcd_send_string(buffer);
+}
+
+int main(void)
+{
+    HAL_Init();
+    SystemClock_Config();
+    
+    // Khởi tạo GPIO, I2C và LCD
+    MX_GPIO_Init();
+    MX_I2C1_Init();
+    
+    lcd_init(); // Khởi tạo LCD
+    lcd_put_cur(0, 0); // Đặt con trỏ vào hàng đầu tiên, cột đầu tiên
+    lcd_send_string("Pulse Counter");
+
+    while (1)
+    {
+        // Vòng lặp chính
+    }
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == GPIO_PIN_0)
+    {
+        // Tăng biến đếm xung
+        pulse_count++;
+        
+        // Cập nhật hiển thị
+        display_pulse_count();
+    }
+}

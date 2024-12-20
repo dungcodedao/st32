@@ -1,0 +1,16 @@
+//stm32f4xx_it.c
+
+void EXTI0_IRQHandler(void)
+{
+    if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_0) != RESET)
+    {
+        // Clear the interrupt flag
+        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_0);
+        
+        // Increment the pulse count
+        pulse_count++;
+        
+        // Refresh the display
+        display_pulse_count();
+    }
+}

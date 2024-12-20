@@ -1,0 +1,30 @@
+
+Bước 1: Phần cứng
+Chuẩn bị các linh kiện cần thiết:
+
+Vi điều khiển STM32 (ví dụ: STM32F103C8T6).
+
+Module LCD 20x04.
+
+Cảm biến xung hoặc nguồn xung ngoài.
+
+Các linh kiện hỗ trợ như điện trở, tụ điện, breadboard, dây nối.
+
+Kết nối phần cứng:
+
+Kết nối các chân của LCD 20x04 với STM32 theo chuẩn giao tiếp (I2C hoặc SPI).
+
+Kết nối cảm biến xung với chân ngắt ngoài của STM32 (ví dụ: chân PA0).
+
+Bước 2: Phần mềm
+Cấu hình ngắt ngoài và LCD:
+
+Sử dụng STM32CubeMX để cấu hình ngắt ngoài cho chân kết nối cảm biến xung và giao tiếp I2C hoặc SPI cho LCD.
+
+Lập trình STM32:
+
+Tạo một dự án mới trong STM32CubeIDE.
+
+Cấu hình ngắt ngoài và giao tiếp I2C hoặc SPI theo cấu hình từ STM32CubeMX.
+
+Viết mã để đếm xung và hiển thị kết quả trên LCD.
